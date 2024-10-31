@@ -48,6 +48,15 @@ class Solution {
     func containsWord(_ string: String, in sentence: String) -> Bool {
         return sentence.containsWord(string)
     }
+    
+    func countCharacter(_ character: Character, in string: String) -> Int {
+        var count = 0
+        for char in string where char == character {
+            count += 1
+        }
+        
+        return count
+    }
 }
 
 extension String {
