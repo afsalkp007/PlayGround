@@ -10,6 +10,16 @@ import XCTest
 
 class SoutionTests: XCTestCase {
     
+    func test_sumOfSequence_givesResult() {
+        let result = makeSUT().sumOfSequence([1, 2, 3, 4])
+        XCTAssertEqual(result, 10)
+    }
+    
+    func test_productOfSequence_givesResult() {
+        let result = makeSUT().productOfSequence([1, 2, 3, 4])
+        XCTAssertEqual(result, 24)
+    }
+    
     func test_repetitiveItems_returnString() {
         let result = makeSUT().getRepetitiveItems("AAaaabbbcessaabrrnnnqq")
         XCTAssertEqual(result, "abnqrs")
@@ -83,14 +93,69 @@ class SoutionTests: XCTestCase {
     }
     
     func test_countCharacter_returnsTheCount() {
-        let result = makeSUT().countCharacter("a", in: "The rain in Spain")
+        let result = makeSUT().countCharacter(input: "The rain in Spain", count: "a")
         XCTAssertEqual(result, 2)
         
-        let result2 = makeSUT().countCharacter("i", in: "Mississippi")
+        let result2 = makeSUT().countCharacter(input: "Mississippi", count: "i")
         XCTAssertEqual(result2, 4)
         
-        let result3 = makeSUT().countCharacter("i", in: "Hacking with Swift")
+        let result3 = makeSUT().countCharacter(input: "Hacking with Swift", count: "i")
         XCTAssertEqual(result3, 3)
+    }
+        
+    func test_countCharacterUsingFilter_returnsTheCount() {
+        let result = makeSUT().countCharacterUsingFilter(input: "The rain in Spain", count: "a")
+        XCTAssertEqual(result, 2)
+        
+        let result2 = makeSUT().countCharacterUsingFilter(input: "Mississippi", count: "i")
+        XCTAssertEqual(result2, 4)
+        
+        let result3 = makeSUT().countCharacterUsingFilter(input: "Hacking with Swift", count: "i")
+        XCTAssertEqual(result3, 3)
+    }
+        
+    func test_countCharacterByRemoving_returnsTheCount() {
+        let result = makeSUT().countCharacterByRemoving(input: "The rain in Spain", count: "a")
+        XCTAssertEqual(result, 2)
+        
+        let result2 = makeSUT().countCharacterByRemoving(input: "Mississippi", count: "i")
+        XCTAssertEqual(result2, 4)
+        
+        let result3 = makeSUT().countCharacterByRemoving(input: "Hacking with Swift", count: "i")
+        XCTAssertEqual(result3, 3)
+    }
+        
+    func test_removeDuplicatesUsingNSOrderedSet_givesString() {
+        let result = makeSUT().removeDuplicatesUsingNSOrderedSet(from: "wombat")
+        XCTAssertEqual(result, "wombat")
+        
+        let result2 = makeSUT().removeDuplicatesUsingNSOrderedSet(from: "hello")
+        XCTAssertEqual(result2, "helo")
+        
+        let result3 = makeSUT().removeDuplicatesUsingNSOrderedSet(from: "Mississippi")
+        XCTAssertEqual(result3, "Misp")
+    }
+    
+    func test_removeDuplicatesByLooping_givesString() {
+        let result = makeSUT().removeDuplicatesByLooping(from: "wombat")
+        XCTAssertEqual(result, "wombat")
+        
+        let result2 = makeSUT().removeDuplicatesByLooping(from: "hello")
+        XCTAssertEqual(result2, "helo")
+        
+        let result3 = makeSUT().removeDuplicatesByLooping(from: "Mississippi")
+        XCTAssertEqual(result3, "Misp")
+    }
+    
+    func test_removeDuplicatesByFilter_givesString() {
+        let result = makeSUT().removeDuplicatesByFilter(from: "wombat")
+        XCTAssertEqual(result, "wombat")
+        
+        let result2 = makeSUT().removeDuplicatesByFilter(from: "hello")
+        XCTAssertEqual(result2, "helo")
+        
+        let result3 = makeSUT().removeDuplicatesByFilter(from: "Mississippi")
+        XCTAssertEqual(result3, "Misp")
     }
     
     // MARK: - Helpers

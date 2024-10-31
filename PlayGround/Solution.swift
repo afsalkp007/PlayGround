@@ -9,6 +9,14 @@ import Foundation
 
 class Solution {
     
+    func sumOfSequence(_ arr: [Int]) -> Int {
+        return arr.reduce(0, +)
+    }
+    
+    func productOfSequence(_ arr: [Int]) -> Int {
+        return arr.reduce(1, *)
+    }
+    
     func getRepetitiveItems(_ string: String) -> String {
         
         var dict = [String: Int]()
@@ -49,13 +57,47 @@ class Solution {
         return sentence.containsWord(string)
     }
     
-    func countCharacter(_ character: Character, in string: String) -> Int {
-        var count = 0
-        for char in string where char == character {
-            count += 1
+    func countCharacter(input: String, count: Character) -> Int {
+        return input.reduce(0) {
+            $1 == count ? $0 + 1 : $0
+        }
+    }
+    
+    func countCharacterUsingFilter(input: String, count: Character) -> Int {
+        return Array(input).filter { $0 == count }.count
+    }
+    
+    func countCharacterByRemoving(input: String, count: String) -> Int {
+        let modified = input.replacingOccurrences(of: count, with: "")
+        return input.count - modified.count
+    }
+    
+    func removeDuplicatesUsingNSOrderedSet(from string: String) -> String {
+        let array = string.map { String($0) }
+        let set = NSOrderedSet(array: array)
+        let letters = Array(set) as! Array<String>
+        return letters.joined()
+    }
+    
+    func removeDuplicatesByLooping(from string: String) -> String {
+        var used = [Character]()
+        for letter in string {
+            if !used.contains(letter) {
+                used.append(letter)
+            }
         }
         
-        return count
+        return String(used)
+    }
+    
+    func removeDuplicatesByFilter(from string: String) -> String {
+        var used = [Character: Bool]()
+        
+        let result = string.filter {
+            used.updateValue(true, forKey: $0) == nil
+        }
+        
+        return result
     }
 }
 
