@@ -9,43 +9,49 @@ import Foundation
 
 class Solution {
     
-    func repetitiveItems(_ string: String) -> String {
+    func getRepetitiveItems(_ string: String) -> String {
         
         var dict = [String: Int]()
         
-        _ = Array(string).map {
+        _ = Array(string.lowercased()).map {
             dict[String($0), default: 0] += 1
         }
         
-        return dict
-            .filter { $0.value > 1 }
-            .map { $0.key }
-            .sorted()
-            .joined()
+        return dict.filter { $0.value > 1 }.map { $0.key }.sorted().joined()
     }
     
-    func uniqueItems(_ str: String) -> Bool {
+    func isUniqueItems(_ str: String) -> Bool {
         return Set(str).count == str.count
     }
     
-    func uniqueItemsString(_ str: String) -> String {
+    func getUniqueItems(_ str: String) -> String {
         
         var dict = [String: Int]()
         
-        _ = Array(str).map { char in
+        _ = Array(str.lowercased()).map { char in
             dict[String(char), default: 0] += 1
         }
         
-        let string = dict
-            .filter { $0.value == 1 }
-            .map { $0.key }
-            .sorted()
-            .joined()
+        let string = dict.filter { $0.value == 1 }.map { $0.key }.sorted().joined()
         
         return string
     }
     
     func isPalindrome(_ str: String) -> Bool {
-        return Array(str) == Array(str.reversed())
+        return str.lowercased() == String(str.lowercased().reversed())
+    }
+    
+    func sameCharacters(with str1: String, and str2: String) -> Bool {
+        return str1.sorted() == str2.sorted()
+    }
+    
+    func containsWord(_ string: String, in sentence: String) -> Bool {
+        return sentence.containsWord(string)
+    }
+}
+
+extension String {
+    func containsWord(_ string: String) -> Bool {
+        self.range(of: string, options: .caseInsensitive) != nil
     }
 }

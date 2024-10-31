@@ -11,25 +11,37 @@ import XCTest
 class SoutionTests: XCTestCase {
     
     func test_repetitiveItems_returnString() {
-        let result = makeSUT().repetitiveItems("aaaabbbcessaabrrnnnqq")
+        let result = makeSUT().getRepetitiveItems("AAaaabbbcessaabrrnnnqq")
         
         XCTAssertEqual(result, "abnqrs")
     }
     
-    func test_uniqueItems_returnBoolean() {
-        let result = makeSUT().uniqueItems("abcd")
+    func test_uniqueItems_returnTrue() {
+        let result = makeSUT().isUniqueItems("No duplicates")
         
         XCTAssertTrue(result)
     }
     
     func test_uniqueItemsString_returnUniqueItems() {
-        let result = makeSUT().uniqueItemsString("aaaabbbcessaabrrnnnq")
+        let result = makeSUT().getUniqueItems("Aaaabbbcessaabrrnnnq")
         
         XCTAssertEqual(result, "ceq")
     }
     
-    func test_isPalindrome_returnBoolean() {
-        let result = makeSUT().isPalindrome("madam")
+    func test_isPalindrome_returnTrue() {
+        let result = makeSUT().isPalindrome("Rats live on no evil star")
+        
+        XCTAssertTrue(result)
+    }
+    
+    func test_sameCharacters_returnTrue() {
+        let result = makeSUT().sameCharacters(with: "a1 b2", and: "b1 a2")
+        
+        XCTAssertTrue(result)
+    }
+    
+    func test_containsWord_returnsBoolean() {
+        let result = makeSUT().containsWord("WORLD", in: "Hello, world")
         
         XCTAssertTrue(result)
     }
