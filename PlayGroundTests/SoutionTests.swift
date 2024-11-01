@@ -191,6 +191,20 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "abc")
     }
     
+    func test_rotateString_givesRotated() {
+        let result = makeSUT().rotateString(input: "abcde", rotated: "eabcd")
+        XCTAssertTrue(result)
+        
+        let result2 = makeSUT().rotateString(input: "abcde", rotated: "cdeab")
+        XCTAssertTrue(result2)
+        
+        let result3 = makeSUT().rotateString(input: "abcde", rotated: "abced")
+        XCTAssertFalse(result3)
+        
+        let result4 = makeSUT().rotateString(input: "abc", rotated: "a")
+        XCTAssertFalse(result4)
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {
