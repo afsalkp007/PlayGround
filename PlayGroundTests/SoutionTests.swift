@@ -158,6 +158,28 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "Misp")
     }
     
+    func test_removeAdjacentSpaces_returnValue() {
+        let result = makeSUT().removeAdjacentSpaces(input: "a   b   c")
+        XCTAssertEqual(result, "a b c")
+        
+        let result2 = makeSUT().removeAdjacentSpaces(input: "    a")
+        XCTAssertEqual(result2, "a")
+        
+        let result3 = makeSUT().removeAdjacentSpaces(input: " abc ")
+        XCTAssertEqual(result3, "abc")
+    }
+    
+    func test_retainSingleSpace_returnValue() {
+        let result = makeSUT().retainSingleSpace(input: "a   b   c")
+        XCTAssertEqual(result, "a b c")
+        
+        let result2 = makeSUT().retainSingleSpace(input: "    a")
+        XCTAssertEqual(result2, " a")
+        
+        let result3 = makeSUT().retainSingleSpace(input: "abc")
+        XCTAssertEqual(result3, "abc")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {
