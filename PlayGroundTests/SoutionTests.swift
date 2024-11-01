@@ -180,6 +180,17 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "abc")
     }
     
+    func test_singleSpaceByRegEx_returnValue() {
+        let result = makeSUT().singleSpaceByRegEx(input: "a   b   c")
+        XCTAssertEqual(result, "a b c")
+        
+        let result2 = makeSUT().singleSpaceByRegEx(input: "    a")
+        XCTAssertEqual(result2, " a")
+        
+        let result3 = makeSUT().singleSpaceByRegEx(input: "abc")
+        XCTAssertEqual(result3, "abc")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

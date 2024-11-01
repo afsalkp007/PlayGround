@@ -122,21 +122,26 @@ class Solution {
     
     // MARK: - Retain single space in consecutive spaces even leading and trailing
     func retainSingleSpace(input: String) -> String {
-        var spaceSeen = false
+        var seenSpace = false
         var returnValue = ""
         
         for letter in input {
             if letter == " " {
-                if spaceSeen == true { continue }
-                spaceSeen = true
+                if seenSpace == true { continue }
+                seenSpace = true
             } else {
-                spaceSeen = false
+                seenSpace = false
             }
             
             returnValue.append(letter)
         }
         
         return returnValue
+    }
+    
+    // MARK: - Retain single space using Regular expressions
+    func singleSpaceByRegEx(input: String) -> String {
+        return input.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
     }
 }
 
