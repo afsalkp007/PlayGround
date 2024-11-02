@@ -9,29 +9,7 @@ import Foundation
 
 class Solution {
     
-    // MARK: - Sum of a Sequence
-    func sumOfSequence(_ arr: [Int]) -> Int {
-        return arr.reduce(0, +)
-    }
-    
-    // MARK: - Product of a Sequence
-    func productOfSequence(_ arr: [Int]) -> Int {
-        return arr.reduce(1, *)
-    }
-    
-    // MARK: - Get recurring items
-    func getRepetitiveItems(_ string: String) -> String {
-        
-        var dict = [String: Int]()
-        
-        _ = Array(string.lowercased()).map {
-            dict[String($0), default: 0] += 1
-        }
-        
-        return dict.filter { $0.value > 1 }.map { $0.key }.sorted().joined()
-    }
-    
-    // MARK: - Get uniqueue items
+    // MARK: - Challenge 1: Are the letters unique?
     func isUniqueItems(_ str: String) -> Bool {
         return Set(str).count == str.count
     }
@@ -49,40 +27,38 @@ class Solution {
         return string
     }
     
-    // MARK: - Is Palindrome?
+    // MARK: - Challenge 2: Is a string a palindrome?
     func isPalindrome(_ str: String) -> Bool {
         return str.lowercased() == String(str.lowercased().reversed())
     }
     
-    // MARK: - Is same characters in two strings?
+    // MARK: - Challenge 3: Do two strings contain the same characters?
     func sameCharacters(with str1: String, and str2: String) -> Bool {
         return str1.sorted() == str2.sorted()
     }
     
-    // MARK: - Whether a sentence contains a particular word?
+    // MARK: - Challenge 4: Does one string contain another?
     func containsWord(_ string: String, in sentence: String) -> Bool {
         return sentence.containsWord(string)
     }
     
-    // MARK: - Get a particular character count in a given String
+    // MARK: - Challenge 5: Count the characters
     func countCharacter(input: String, count: Character) -> Int {
         return input.reduce(0) {
             $1 == count ? $0 + 1 : $0
         }
     }
     
-    // MARK: - Count character using Filter
     func countCharacterUsingFilter(input: String, count: Character) -> Int {
         return Array(input).filter { $0 == count }.count
     }
     
-    // MARK: - Count character by removing
     func countCharacterByRemoving(input: String, count: String) -> Int {
         let modified = input.replacingOccurrences(of: count, with: "")
         return input.count - modified.count
     }
     
-    // MARK: - Remove duplicates using NSOrderedSet
+    // MARK: - Challenge 6: Remove duplicate letters from a string
     func removeDuplicatesUsingNSOrderedSet(from string: String) -> String {
         let array = string.map { String($0) }
         let set = NSOrderedSet(array: array)
@@ -90,7 +66,6 @@ class Solution {
         return letters.joined()
     }
     
-    // MARK: - Remove duplicates by Looping
     func removeDuplicatesByLooping(from string: String) -> String {
         var used = [Character]()
         for letter in string {
@@ -102,7 +77,6 @@ class Solution {
         return String(used)
     }
     
-    // MARK: - Remove duplicates by Filtering
     func removeDuplicatesByFilter(from string: String) -> String {
         var used = [Character: Bool]()
         
@@ -113,14 +87,13 @@ class Solution {
         return result
     }
     
-    // MARK: - Remove adjacent spaces in between
+    // MARK: - Challenge 7: Condense whitespace
     
     func removeAdjacentSpaces(input: String) -> String {
         let components = input.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
     
-    // MARK: - Retain single space in consecutive spaces even leading and trailing
     func retainSingleSpace(input: String) -> String {
         var seenSpace = false
         var returnValue = ""
@@ -139,11 +112,11 @@ class Solution {
         return returnValue
     }
     
-    // MARK: - Retain single space using Regular expressions
     func singleSpaceByRegEx(input: String) -> String {
         return input.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
     }
     
+    // MARK: - Challenge 8: String is rotated
     func rotateString(input: String, rotated: String) -> Bool {
         guard input.count == rotated.count else { return false }
         let combined = input + input
