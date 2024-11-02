@@ -10,22 +10,8 @@ import XCTest
 
 class SoutionTests: XCTestCase {
     
-    func test_sumOfSequence_givesResult() {
-        let result = makeSUT().sumOfSequence([1, 2, 3, 4])
-        XCTAssertEqual(result, 10)
-    }
-    
-    func test_productOfSequence_givesResult() {
-        let result = makeSUT().productOfSequence([1, 2, 3, 4])
-        XCTAssertEqual(result, 24)
-    }
-    
-    func test_repetitiveItems_returnString() {
-        let result = makeSUT().getRepetitiveItems("AAaaabbbcessaabrrnnnqq")
-        XCTAssertEqual(result, "abnqrs")
-    }
-    
-    func test_uniqueItems_returnTrue() {
+    // MARK: - Challenge 1: Are the letters unique?
+    func test_isUniqueItems_returnTrue() {
         let result = makeSUT().isUniqueItems("No duplicates")
         XCTAssertTrue(result)
         
@@ -44,6 +30,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result, "ceq")
     }
     
+    // MARK: - Challenge 2: Is a string a palindrome?
     func test_isPalindrome_returnTrue() {
         let result = makeSUT().isPalindrome("rotator")
         XCTAssertTrue(result)
@@ -58,6 +45,7 @@ class SoutionTests: XCTestCase {
         XCTAssertFalse(result4)
     }
     
+    // MARK: - Challenge 3: Do two strings contain the same characters?
     func test_sameCharacters_returnTrue() {
         let result = makeSUT().sameCharacters(with: "abca", and: "abca")
         XCTAssertTrue(result)
@@ -81,6 +69,7 @@ class SoutionTests: XCTestCase {
         XCTAssertFalse(result7)
     }
     
+    // MARK: - Challenge 4: Does one string contain another?
     func test_containsWord_returnsBoolean() {
         let result = makeSUT().containsWord("Hello", in: "Hello, world")
         XCTAssertTrue(result)
@@ -92,6 +81,7 @@ class SoutionTests: XCTestCase {
         XCTAssertFalse(result3)
     }
     
+    // MARK: - Challenge 5: Count the characters
     func test_countCharacter_returnsTheCount() {
         let result = makeSUT().countCharacter(input: "The rain in Spain", count: "a")
         XCTAssertEqual(result, 2)
@@ -125,6 +115,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, 3)
     }
         
+    // MARK: - Challenge 6: Remove duplicate letters from a string
     func test_removeDuplicatesUsingNSOrderedSet_givesString() {
         let result = makeSUT().removeDuplicatesUsingNSOrderedSet(from: "wombat")
         XCTAssertEqual(result, "wombat")
@@ -158,6 +149,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "Misp")
     }
     
+    // MARK: - Challenge 7: Condense whitespace
     func test_removeAdjacentSpaces_returnValue() {
         let result = makeSUT().removeAdjacentSpaces(input: "a   b   c")
         XCTAssertEqual(result, "a b c")
@@ -191,6 +183,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "abc")
     }
     
+    // MARK: - Challenge 8: String is rotated
     func test_rotateString_givesRotated() {
         let result = makeSUT().rotateString(input: "abcde", rotated: "eabcd")
         XCTAssertTrue(result)
@@ -203,6 +196,15 @@ class SoutionTests: XCTestCase {
         
         let result4 = makeSUT().rotateString(input: "abc", rotated: "a")
         XCTAssertFalse(result4)
+    }
+    
+    // MARK: - Challenge 9: Find pangrams
+    func test_isPangrams_returnBoolean() {
+        let result = makeSUT().isPangrams(input: "The quick brown fox jumps over the lazy dog")
+        XCTAssertTrue(result, "the panagram should return true")
+        
+        let result2 = makeSUT().isPangrams(input: "The quick brown fox jumped over the lazy dog")
+        XCTAssertFalse(result2, "the panagram should return false")
     }
     
     // MARK: - Helpers

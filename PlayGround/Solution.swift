@@ -88,7 +88,6 @@ class Solution {
     }
     
     // MARK: - Challenge 7: Condense whitespace
-    
     func removeAdjacentSpaces(input: String) -> String {
         let components = input.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
@@ -121,6 +120,13 @@ class Solution {
         guard input.count == rotated.count else { return false }
         let combined = input + input
         return combined.contains(rotated)
+    }
+    
+    // MARK: - Challenge 9: Find pangrams
+    func isPangrams(input: String) -> Bool {
+        let set = Set(input.lowercased())
+        let letters = set.filter { $0 >= "a" && $0 <= "z" }
+        return letters.count == 26
     }
 }
 
