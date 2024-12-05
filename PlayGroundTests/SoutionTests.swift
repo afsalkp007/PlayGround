@@ -289,6 +289,17 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "a2A2a2")
     }
     
+    func test_challenge114_getsArray() {
+        let result1 = makeSUT().challenge14(input: "a")
+        XCTAssertEqual(result1, ["a"])
+        
+        let result2 = makeSUT().challenge14(input: "ab")
+        XCTAssertEqual(result2, ["ab", "ba"])
+        
+        let result3 = makeSUT().challenge14(input: "abc")
+        XCTAssertEqual(result3, ["abc", "acb", "bac", "bca", "cab", "cba"])
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

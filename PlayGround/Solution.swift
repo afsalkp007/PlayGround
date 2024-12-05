@@ -275,6 +275,24 @@ class Solution {
         
         return returnValue
     }
+    
+    func challenge14(input: String, current: String = "") -> [String] {
+        var result = [String]()
+        let length = input.count
+        let strArray = Array(input)
+        
+        if length == 0 {
+            result.append(current)
+        } else {
+            for i in 0..<length {
+                let left = String(strArray[0..<i])
+                let right = String(strArray[i+1..<length])
+                result += challenge14(input: left + right, current: current + String(strArray[i]))
+            }
+        }
+        
+        return result
+    }
 }
 
 extension String {
