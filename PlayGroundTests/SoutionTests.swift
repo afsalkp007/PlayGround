@@ -219,7 +219,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result2.consonants, 7)
     }
     
-    func test_vowelsAndConsonantsWithContains_returnNumbers() {
+    func test_vowelsAndConsonantsWithStringContains_returnNumbers() {
         let result1 = makeSUT().challenge10b(input: "Swift Coding Challenges")
         XCTAssertEqual(result1.vowels, 6)
         XCTAssertEqual(result1.consonants, 15)
@@ -227,6 +227,36 @@ class SoutionTests: XCTestCase {
         let result2 = makeSUT().challenge10b(input: "Mississippi")
         XCTAssertEqual(result2.vowels, 4)
         XCTAssertEqual(result2.consonants, 7)
+    }
+    
+    func test_vowelsAndConsonantsWithCharacterContains_returnNumbers() {
+        let result1 = makeSUT().challenge10c(input: "Swift Coding Challenges")
+        XCTAssertEqual(result1.vowels, 6)
+        XCTAssertEqual(result1.consonants, 15)
+        
+        let result2 = makeSUT().challenge10c(input: "Mississippi")
+        XCTAssertEqual(result2.vowels, 4)
+        XCTAssertEqual(result2.consonants, 7)
+    }
+    
+    func test_challenge11_returnTrue() {
+        let result1 = makeSUT().challenge11(first: "Clamp", second: "Cramp")
+        XCTAssertEqual(result1, true)
+        
+        let result2 = makeSUT().challenge11(first: "Clamp", second: "Crams")
+        XCTAssertEqual(result2, true)
+        
+        let result3 = makeSUT().challenge11(first: "Clamp", second: "Grams")
+        XCTAssertEqual(result3, true)
+        
+        let result4 = makeSUT().challenge11(first: "Clamp", second: "Grans")
+        XCTAssertEqual(result4, false)
+        
+        let result5 = makeSUT().challenge11(first: "Clamp", second: "Clam")
+        XCTAssertEqual(result5, false)
+        
+        let result6 = makeSUT().challenge11(first: "clamp", second: "maple")
+        XCTAssertEqual(result6, false)
     }
     
     // MARK: - Helpers

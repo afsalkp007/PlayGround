@@ -172,6 +172,45 @@ class Solution {
         
         return (vowelsCount, consonantsCount)
     }
+    
+    func challenge10c(input: String) -> (vowels: Int, consonants: Int) {
+        
+        let vowels = "aeiou"
+        let consonants = "bcdfghjklmnpqrstvwxyz"
+        
+        var vowelsCount = 0
+        var consonantsCount = 0
+        
+        for letter in input.lowercased() {
+            if vowels.contains(letter) {
+                vowelsCount += 1
+            } else if consonants.contains(letter) {
+                consonantsCount += 1
+            }
+        }
+        
+        return (vowelsCount, consonantsCount)
+    }
+    
+    func challenge11(first: String, second: String) -> Bool {
+        guard first.count == second.count else { return false }
+        
+        let firstArray = Array(first)
+        let secondArray = Array(second)
+        var difference = 0
+        
+        for (index, letter) in firstArray.enumerated() {
+            if secondArray[index] != letter {
+                difference += 1
+                
+                if difference == 4 {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 }
 
 extension String {
