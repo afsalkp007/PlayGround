@@ -259,6 +259,14 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result6, false)
     }
     
+    func test_challenge12_getsLongestPrefix() {
+        let result1 = makeSUT().challenge12(input: "swift switch swill swim")
+        XCTAssertEqual(result1, "swi")
+        
+        let result2 = makeSUT().challenge12(input: "flip flap flop")
+        XCTAssertEqual(result2, "fl")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {
