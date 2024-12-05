@@ -267,6 +267,28 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result2, "fl")
     }
     
+    func test_challenge13a_getsString() {
+        let result1 = makeSUT().challenge13a(input: "aabbcc")
+        XCTAssertEqual(result1, "a2b2c2")
+        
+        let result2 = makeSUT().challenge13a(input: "aaabaaabaaa")
+        XCTAssertEqual(result2, "a3b1a3b1a3")
+        
+        let result3 = makeSUT().challenge13a(input: "aaAAaa")
+        XCTAssertEqual(result3, "a2A2a2")
+    }
+    
+    func test_challenge13b_getsString() {
+        let result1 = makeSUT().challenge13b(input: "aabbcc")
+        XCTAssertEqual(result1, "a2b2c2")
+        
+        let result2 = makeSUT().challenge13b(input: "aaabaaabaaa")
+        XCTAssertEqual(result2, "a3b1a3b1a3")
+        
+        let result3 = makeSUT().challenge13b(input: "aaAAaa")
+        XCTAssertEqual(result3, "a2A2a2")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

@@ -234,6 +234,47 @@ class Solution {
         
         return bestPrefix
     }
+    
+    func challenge13a(input: String) -> String {
+        var currentLetter: Character?
+        var returnValue = ""
+        var letterCounter = 0
+        
+        for letter in input {
+            if letter == currentLetter {
+                letterCounter += 1
+            } else {
+                if let current = currentLetter {
+                    returnValue.append("\(current)\(letterCounter)")
+                }
+                currentLetter = letter
+                letterCounter = 1
+            }
+        }
+        
+        if let current = currentLetter {
+            returnValue.append("\(current)\(letterCounter)")
+        }
+        
+        return returnValue
+    }
+    
+    func challenge13b(input: String) -> String {
+        var returnValue = ""
+        var letterCounter = 0
+        let letterArray = Array(input)
+        
+        for i in 0..<letterArray.count {
+            letterCounter += 1
+            
+            if i + 1 == letterArray.count || letterArray[i] != letterArray[i + 1] {
+                returnValue += "\(letterArray[i])\(letterCounter)"
+                letterCounter = 0
+            }
+        }
+        
+        return returnValue
+    }
 }
 
 extension String {
