@@ -207,6 +207,28 @@ class SoutionTests: XCTestCase {
         XCTAssertFalse(result2)
     }
     
+    // MARK: - Challenge 10: Vowels and consonants
+    
+    func test_vowelsAndConsonantsWithCharacterSet_returnNumbers() {
+        let result1 = makeSUT().challenge10a(input: "Swift Coding Challenges")
+        XCTAssertEqual(result1.vowels, 6)
+        XCTAssertEqual(result1.consonants, 15)
+        
+        let result2 = makeSUT().challenge10a(input: "Mississippi")
+        XCTAssertEqual(result2.vowels, 4)
+        XCTAssertEqual(result2.consonants, 7)
+    }
+    
+    func test_vowelsAndConsonantsWithContains_returnNumbers() {
+        let result1 = makeSUT().challenge10b(input: "Swift Coding Challenges")
+        XCTAssertEqual(result1.vowels, 6)
+        XCTAssertEqual(result1.consonants, 15)
+        
+        let result2 = makeSUT().challenge10b(input: "Mississippi")
+        XCTAssertEqual(result2.vowels, 4)
+        XCTAssertEqual(result2.consonants, 7)
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

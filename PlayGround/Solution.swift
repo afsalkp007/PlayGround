@@ -128,6 +128,50 @@ class Solution {
         let letters = set.filter { $0 >= "a" && $0 <= "z" }
         return letters.count == 26
     }
+    
+    // MARK: - Challenge 10: Vowels and consonants
+    
+    func challenge10a(input: String) -> (vowels: Int, consonants: Int) {
+        
+        let vowels = CharacterSet(charactersIn: "aeiou")
+        let consonants = CharacterSet(charactersIn: "bcdfghjklmnpqrstvwxyz")
+        
+        var vowelsCount = 0
+        var consonantsCount = 0
+        
+        for letter in input.lowercased() {
+            let stringLetter = String(letter)
+            
+            if stringLetter.rangeOfCharacter(from: vowels) != nil {
+                vowelsCount += 1
+            } else if stringLetter.rangeOfCharacter(from: consonants) != nil {
+                consonantsCount += 1
+            }
+        }
+        
+        return (vowelsCount, consonantsCount)
+    }
+    
+    func challenge10b(input: String) -> (vowels: Int, consonants: Int) {
+        
+        let vowels = "aeiou"
+        let consonants = "bcdfghjklmnpqrstvwxyz"
+        
+        var vowelsCount = 0
+        var consonantsCount = 0
+        
+        for letter in input.lowercased() {
+            let stringLetter = String(letter)
+            
+            if vowels.contains(stringLetter) {
+                vowelsCount += 1
+            } else if consonants.contains(stringLetter) {
+                consonantsCount += 1
+            }
+        }
+        
+        return (vowelsCount, consonantsCount)
+    }
 }
 
 extension String {
