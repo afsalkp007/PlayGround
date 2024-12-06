@@ -410,6 +410,22 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result1.b, 2)
     }
     
+    func test_challenge20a_randomn() {
+        let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 16777259]
+        numbers.forEach { num in
+                let res = makeSUT().challenge20a(input: num)
+                XCTAssertEqual(res, true)
+            }
+    }
+    
+    func test_challenge20b_randomn() {
+        let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 16777259]
+        numbers.forEach { num in
+                let res = makeSUT().challenge20b(input: num)
+                XCTAssertEqual(res, true)
+            }
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

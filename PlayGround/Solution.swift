@@ -357,6 +357,30 @@ class Solution {
         
         return (a, b)
     }
+    
+    func challenge20a(input: Int) -> Bool {
+        guard input >= 2 else { return false }
+        
+        for i in 2..<input {
+            if input % i == 0 {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func challenge20b(input: Int) -> Bool {
+        guard input >= 2 else { return false }
+        guard input != 2 else { return true }
+        let max = Int(ceil(sqrt(Double(input))))
+        for i in 2 ... max {
+            if input % i == 0 {
+                return false
+            }
+        }
+        return true
+    }
 }
 
 extension String {
