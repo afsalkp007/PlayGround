@@ -289,7 +289,7 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result3, "a2A2a2")
     }
     
-    func test_challenge114_getsArray() {
+    func test_challenge14_getsArray() {
         let result1 = makeSUT().challenge14(input: "a")
         XCTAssertEqual(result1, ["a"])
         
@@ -298,6 +298,116 @@ class SoutionTests: XCTestCase {
         
         let result3 = makeSUT().challenge14(input: "abc")
         XCTAssertEqual(result3, ["abc", "acb", "bac", "bca", "cab", "cba"])
+    }
+    
+    func test_challenge15_reverseWords() {
+        let result1 = makeSUT().challenge15(input: "Swift Coding Challenges")
+        XCTAssertEqual(result1, "tfiwS gnidoC segnellahC")
+        
+        let result2 = makeSUT().challenge15(input: "The quick brown fox")
+        XCTAssertEqual(result2, "ehT kciuq nworb xof")
+    }
+    
+    func test_challenge16a_fizzBuzz() {
+        let result1 = makeSUT().challenge16a(input: 1)
+        XCTAssertEqual(result1, "1")
+        
+        let result2 = makeSUT().challenge16a(input: 2)
+        XCTAssertEqual(result2, "2")
+        
+        let result3 = makeSUT().challenge16a(input: 3)
+        XCTAssertEqual(result3, "Fizz")
+        
+        let result4 = makeSUT().challenge16a(input: 4)
+        XCTAssertEqual(result4, "4")
+        
+        let result5 = makeSUT().challenge16a(input: 5)
+        XCTAssertEqual(result5, "Buzz")
+        
+        let result6 = makeSUT().challenge16a(input: 15)
+        XCTAssertEqual(result6, "FizzBuzz")
+    }
+    
+    func test_challenge16b_fizzBuzz() {
+        let result1 = makeSUT().challenge16b(input: 1)
+        XCTAssertEqual(result1, "1")
+        
+        let result2 = makeSUT().challenge16b(input: 2)
+        XCTAssertEqual(result2, "2")
+        
+        let result3 = makeSUT().challenge16b(input: 3)
+        XCTAssertEqual(result3, "Fizz")
+        
+        let result4 = makeSUT().challenge16b(input: 4)
+        XCTAssertEqual(result4, "4")
+        
+        let result5 = makeSUT().challenge16b(input: 5)
+        XCTAssertEqual(result5, "Buzz")
+        
+        let result6 = makeSUT().challenge16b(input: 15)
+        XCTAssertEqual(result6, "FizzBuzz")
+    }
+    
+    func test_challenge16c_fizzBuzz() {
+        let result1 = makeSUT().challenge16c(input: 1)
+        XCTAssertEqual(result1, "1")
+        
+        let result2 = makeSUT().challenge16c(input: 2)
+        XCTAssertEqual(result2, "2")
+        
+        let result3 = makeSUT().challenge16c(input: 3)
+        XCTAssertEqual(result3, "Fizz")
+        
+        let result4 = makeSUT().challenge16c(input: 4)
+        XCTAssertEqual(result4, "4")
+        
+        let result5 = makeSUT().challenge16c(input: 5)
+        XCTAssertEqual(result5, "Buzz")
+        
+        let result6 = makeSUT().challenge16c(input: 15)
+        XCTAssertEqual(result6, "FizzBuzz")
+    }
+    
+    func test_challenge17a_randomn() {
+        let result1 = makeSUT().challenge17a(min: 1, max: 10)
+        XCTAssertFalse(result1 > 10)
+        XCTAssertFalse(result1 < 1)
+    }
+    
+    func test_challenge17b_randomn() {
+        let result1 = makeSUT().challenge17b(min: 1, max: 10)
+        XCTAssertFalse(result1 > 10)
+        XCTAssertFalse(result1 < 1)
+    }
+    
+    func test_challenge18a_randomn() {
+        let result1 = makeSUT().challenge18a(num: 4, power: 3)
+        XCTAssertEqual(result1, 64)
+        
+        let result2 = makeSUT().challenge18a(num: 2, power: 8)
+        XCTAssertEqual(result2, 256)
+    }
+    
+    func test_challenge18b_randomn() {
+        let result1 = makeSUT().challenge18b(num: 4, power: 3)
+        XCTAssertEqual(result1, 64)
+        
+        let result2 = makeSUT().challenge18b(num: 2, power: 8)
+        XCTAssertEqual(result2, 256)
+    }
+    
+    func test_challenge19a_randomn() {
+        var a = 2, b = 3
+        let result1 = makeSUT().challenge19a(a: &a, b: &b)
+        XCTAssertEqual(result1.a, 3)
+        XCTAssertEqual(result1.b, 2)
+    }
+    
+    func test_challenge19b_randomn() {
+        var a = 2, b = 3
+        let result1 = makeSUT().challenge19b(a: &a, b: &b)
+        XCTAssertEqual(result1.a, 3)
+        XCTAssertEqual(result1.b, 2)
     }
     
     // MARK: - Helpers

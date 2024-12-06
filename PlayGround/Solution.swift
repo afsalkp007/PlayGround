@@ -9,13 +9,11 @@ import Foundation
 
 class Solution {
     
-    // MARK: - Challenge 1: Are the letters unique?
     func challenge1a(_ str: String) -> Bool {
         return Set(str).count == str.count
     }
     
     func challenge1b(_ str: String) -> String {
-        
         var dict = [String: Int]()
         
         _ = Array(str.lowercased()).map { char in
@@ -26,23 +24,20 @@ class Solution {
         
         return string
     }
-    
-    // MARK: - Challenge 2: Is a string a palindrome?
+
     func challenge2(_ str: String) -> Bool {
         return str.lowercased() == String(str.lowercased().reversed())
     }
     
-    // MARK: - Challenge 3: Do two strings contain the same characters?
     func challenge3(with str1: String, and str2: String) -> Bool {
         return str1.sorted() == str2.sorted()
     }
     
-    // MARK: - Challenge 4: Does one string contain another?
+
     func challenge4(_ string: String, in sentence: String) -> Bool {
         return sentence.containsWord(string)
     }
-    
-    // MARK: - Challenge 5: Count the characters
+
     func challenge5a(input: String, count: Character) -> Int {
         return input.reduce(0) {
             $1 == count ? $0 + 1 : $0
@@ -58,7 +53,7 @@ class Solution {
         return input.count - modified.count
     }
     
-    // MARK: - Challenge 6: Remove duplicate letters from a string
+
     func challenge6a(from string: String) -> String {
         let array = string.map { String($0) }
         let set = NSOrderedSet(array: array)
@@ -87,7 +82,6 @@ class Solution {
         return result
     }
     
-    // MARK: - Challenge 7: Condense whitespace
     func challenge7a(input: String) -> String {
         let components = input.components(separatedBy: .whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
@@ -115,24 +109,19 @@ class Solution {
         return input.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
     }
     
-    // MARK: - Challenge 8: String is rotated
     func challenge8(input: String, rotated: String) -> Bool {
         guard input.count == rotated.count else { return false }
         let combined = input + input
         return combined.contains(rotated)
     }
     
-    // MARK: - Challenge 9: Find pangrams
     func challenge9(input: String) -> Bool {
         let set = Set(input.lowercased())
         let letters = set.filter { $0 >= "a" && $0 <= "z" }
         return letters.count == 26
     }
     
-    // MARK: - Challenge 10: Vowels and consonants
-    
     func challenge10a(input: String) -> (vowels: Int, consonants: Int) {
-        
         let vowels = CharacterSet(charactersIn: "aeiou")
         let consonants = CharacterSet(charactersIn: "bcdfghjklmnpqrstvwxyz")
         
@@ -153,7 +142,6 @@ class Solution {
     }
     
     func challenge10b(input: String) -> (vowels: Int, consonants: Int) {
-        
         let vowels = "aeiou"
         let consonants = "bcdfghjklmnpqrstvwxyz"
         
@@ -174,7 +162,6 @@ class Solution {
     }
     
     func challenge10c(input: String) -> (vowels: Int, consonants: Int) {
-        
         let vowels = "aeiou"
         let consonants = "bcdfghjklmnpqrstvwxyz"
         
@@ -213,7 +200,6 @@ class Solution {
     }
     
     func challenge12(input: String) -> String {
-        
         let parts = input.components(separatedBy: " ")
         guard let first = parts.first else { return "" }
         
@@ -292,6 +278,84 @@ class Solution {
         }
         
         return result
+    }
+    
+    func challenge15(input: String) -> String {
+        let parts = input.components(separatedBy: " ")
+        let reversed = parts.map { String($0.reversed()) }
+        return reversed.joined(separator: " ")
+    }
+    
+    func challenge16a(input: Int) -> String {
+        if input % 3 == 0 && input % 5 == 0 {
+            return "FizzBuzz"
+        } else if input % 3 == 0 {
+            return "Fizz"
+        } else if input % 5 == 0 {
+            return "Buzz"
+        } else {
+            return "\(input)"
+        }
+    }
+    
+    func challenge16b(input: Int) -> String {
+        if input % 3 == 0 {
+            if  input % 5 == 0 {
+                return "FizzBuzz"
+            } else {
+                return "Fizz"
+            }
+        } else if input % 5 == 0 {
+            return "Buzz"
+        } else {
+            return "\(input)"
+        }
+    }
+    
+    func challenge16c(input: Int) -> String {
+        return (input % 3 == 0 ? input % 5 == 0 ? "FizzBuzz" : "Fizz" : input % 5 == 0 ? "Buzz" : "\(input)")
+    }
+    
+    func challenge17a(min: Int, max: Int) -> Int {
+        return Int.random(in: min...max)
+    }
+    
+    func challenge17b(min: Int, max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(max - min + 1))) + min
+    }
+    
+    func challenge18a(num: Int, power: Int) -> Int {
+        guard num > 0, power > 0 else { return 0 }
+        
+        var res = num
+        for _ in 1..<power {
+            res *= num
+        }
+        return res
+    }
+    
+    func challenge18b(num: Int, power: Int) -> Int {
+        guard num > 0, power > 0 else { return 0 }
+        
+        if power == 1 { return num }
+        
+        return num * challenge18b(num: num, power: power - 1)
+    }
+    
+    func challenge19a(a: inout Int, b: inout Int) -> (a: Int, b: Int) {
+        a = a + b
+        b = a - b
+        a = a - b
+        
+        return (a, b)
+    }
+    
+    func challenge19b(a: inout Int, b: inout Int) -> (a: Int, b: Int) {
+        a = a ^ b
+        b = a ^ b
+        a = a ^ b
+        
+        return (a, b)
     }
 }
 
