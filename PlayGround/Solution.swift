@@ -441,6 +441,77 @@ class Solution {
         
         return (nextHighest, nextLowest)
     }
+    
+    func challenge22(_ input: UInt) -> UInt {
+        let binary = String(input, radix: 2)
+        let paddingAmount = 8 - binary.count
+
+        let paddedBinary = String(repeating: "0", count: paddingAmount) + binary
+        let reversedBinary = String(paddedBinary.reversed())
+
+        return UInt(reversedBinary, radix: 2)!
+    }
+    
+    func challenge23a(_ input: String) -> Bool {
+        let numCount = input.filter { $0.isNumber }.count
+        return numCount == input.count
+    }
+    
+    func challenge23b(_ input: String) -> Bool {
+        return UInt(input) != nil
+    }
+    
+    func challenge23c(_ input: String) -> Bool {
+        for letter in input {
+            if Int(String(letter)) == nil {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func challenge23d(_ input: String) -> Bool {
+        input.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
+    func challenge23e(_ input: String) -> Bool {
+        input.rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789").inverted) == nil
+    }
+    
+    func challenge24a(_ input: String) -> Int {
+        var currentNumber = ""
+        var sum = 0
+        
+        for letter in input {
+            let strLetter = String(letter)
+
+            if letter.isNumber {
+                currentNumber += strLetter
+            } else {
+                sum += Int(currentNumber) ?? 0
+                currentNumber = ""
+            }
+        }
+        
+        sum += Int(currentNumber) ?? 0
+        return sum
+    }
+    
+    func challenge24b(_ string: String) -> Int {
+
+        let regex = try! NSRegularExpression(pattern: "(\\d+)", options: [])
+        let range = NSRange(location: 0, length: string.utf16.count)
+        let matches = regex.matches(in: string, options: [], range: range)
+        let allNumbers = matches.compactMap { Int((string as NSString).substring(with: $0.range)) }
+        return allNumbers.reduce(0, +)
+    }
+    
+    func challenge24c(_ string: String) -> Int {
+        return string
+            .replacingOccurrences(of: "\\D+", with: "-", options: .regularExpression)
+            .split(separator: "-")
+            .reduce(0) { $0 + Int(String($1))! }
+    }
 }
 
 extension String {

@@ -438,6 +438,66 @@ class SoutionTests: XCTestCase {
         XCTAssertEqual(result1.nextLowest, 10)
     }
     
+    func test_challenge22_givesResult() {
+        XCTAssertEqual(makeSUT().challenge22(32), 4)
+        XCTAssertEqual(makeSUT().challenge22(4), 32)
+        XCTAssertEqual(makeSUT().challenge22(41), 148)
+        XCTAssertEqual(makeSUT().challenge22(148), 41)
+    }
+    
+    func test_challenge23a_givesResult() {
+        XCTAssertEqual(makeSUT().challenge23a("01010101"), true)
+        XCTAssertEqual(makeSUT().challenge23a("123456789"), true)
+        XCTAssertEqual(makeSUT().challenge23a("9223372036854775808"), true)
+        XCTAssertEqual(makeSUT().challenge23a("1.01"), false)
+    }
+    
+    func test_challenge23b_givesResult() {
+        XCTAssertEqual(makeSUT().challenge23b("01010101"), true)
+        XCTAssertEqual(makeSUT().challenge23b("123456789"), true)
+        XCTAssertEqual(makeSUT().challenge23b("9223372036854775808"), true)
+        XCTAssertEqual(makeSUT().challenge23b("1.01"), false)
+    }
+    
+    func test_challenge23c_givesResult() {
+        XCTAssertEqual(makeSUT().challenge23c("01010101"), true)
+        XCTAssertEqual(makeSUT().challenge23c("123456789"), true)
+        XCTAssertEqual(makeSUT().challenge23c("9223372036854775808"), true)
+        XCTAssertEqual(makeSUT().challenge23c("1.01"), false)
+    }
+    
+    func test_challenge23d_givesResult() {
+        XCTAssertEqual(makeSUT().challenge23d("01010101"), true)
+        XCTAssertEqual(makeSUT().challenge23d("123456789"), true)
+        XCTAssertEqual(makeSUT().challenge23d("9223372036854775808"), true)
+        XCTAssertEqual(makeSUT().challenge23d("1.01"), false)
+    }
+    
+    func test_challenge23e_givesResult() {
+        XCTAssertEqual(makeSUT().challenge23e("01010101"), true)
+        XCTAssertEqual(makeSUT().challenge23e("123456789"), true)
+        XCTAssertEqual(makeSUT().challenge23e("9223372036854775808"), true)
+        XCTAssertEqual(makeSUT().challenge23e("1.01"), false)
+    }
+    
+    func test_challenge24a_givesResult() {
+        XCTAssertEqual(makeSUT().challenge24a("a1b2c3"), 6)
+        XCTAssertEqual(makeSUT().challenge24a("a10b20c30"), 60)
+        XCTAssertEqual(makeSUT().challenge24a("h8ers"), 8)
+    }
+    
+    func test_challenge24b_givesResult() {
+        XCTAssertEqual(makeSUT().challenge24b("a1b2c3"), 6)
+        XCTAssertEqual(makeSUT().challenge24b("a10b20c30"), 60)
+        XCTAssertEqual(makeSUT().challenge24b("h8ers"), 8)
+    }
+    
+    func test_challenge24c_givesResult() {
+        XCTAssertEqual(makeSUT().challenge24c("a1b2c3"), 6)
+        XCTAssertEqual(makeSUT().challenge24c("a10b20c30"), 60)
+        XCTAssertEqual(makeSUT().challenge24c("h8ers"), 8)
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {
