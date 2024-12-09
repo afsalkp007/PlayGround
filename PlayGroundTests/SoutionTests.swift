@@ -426,6 +426,18 @@ class SoutionTests: XCTestCase {
             }
     }
     
+    func test_challenge21a_givesResult() {
+        let result1 = makeSUT().challenge21a(input: 12)
+        XCTAssertEqual(result1.nextHighest, 17)
+        XCTAssertEqual(result1.nextLowest, 10)
+    }
+    
+    func test_challenge21b_givesResult() {
+        let result1 = makeSUT().challenge21b(input: 12)
+        XCTAssertEqual(result1.nextHighest, 17)
+        XCTAssertEqual(result1.nextLowest, 10)
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> Solution {

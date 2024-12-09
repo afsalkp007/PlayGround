@@ -381,6 +381,66 @@ class Solution {
         }
         return true
     }
+    
+    func challenge21a(input: Int) -> (nextHighest: Int?, nextLowest: Int?) {
+        
+        let binary = String(input, radix: 2)
+        let targetOnes = binary.filter { $0 == "1" }.count
+        
+        var nextHighest: Int?
+        var nextLowest: Int?
+        
+        for i in input + 1...Int.max {
+            let currentBinary = String(i, radix: 2)
+            let currentOnes = currentBinary.filter { $0 == "1" }.count
+            
+            if targetOnes == currentOnes {
+                nextHighest = i
+                break
+            }
+        }
+        
+        for i in (0..<input).reversed() {
+            let currentBinary = String(i, radix: 2)
+            let currentOnes = currentBinary.filter { $0 == "1" }.count
+            
+            if targetOnes == currentOnes {
+                nextLowest = i
+                break
+            }
+        }
+        
+        return (nextHighest, nextLowest)
+    }
+    
+    func challenge21b(input: Int) -> (nextHighest: Int?, nextLowest: Int?) {
+        
+        func Ones(in number: Int) -> Int {
+            let binary = String(number, radix: 2)
+            return binary.filter { $0 == "1" }.count
+        }
+        
+        let targetOnes = Ones(in: input)
+        
+        var nextHighest: Int?
+        var nextLowest: Int?
+        
+        for i in input + 1...Int.max {
+            if Ones(in: i) == targetOnes {
+                nextHighest = i
+                break
+            }
+        }
+        
+        for i in (0..<input).reversed() {
+            if Ones(in: i) == targetOnes {
+                nextLowest = i
+                break
+            }
+        }
+        
+        return (nextHighest, nextLowest)
+    }
 }
 
 extension String {
